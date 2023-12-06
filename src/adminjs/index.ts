@@ -1,16 +1,18 @@
 import AdminJs from 'adminjs'
-import AdminJsExpress from '@adminjs/express'
-import AdminJsSequelize from '@adminjs/sequelize'
-import { database } from '../database'
+import AdminJSExpress from '@adminjs/express'
+import AdminJSSequelize from '@adminjs/sequelize'
+import { adminJsResources } from './resources'
+import sequelize  from '../database'
 
-AdminJs.registerAdapter(AdminJsSequelize)
+AdminJs.registerAdapter(AdminJSSequelize)
 
 export const adminJs = new AdminJs({
-  databases: [database],
+  databases: [sequelize],
   rootPath: '/admin',
+  resources: adminJsResources,
   branding: {
     companyName: 'Educa+',
-    logo: '/onebitflix.svg',
+    logo: '/logo2.png',
     theme: {
       colors: {
         primary100: '#ff0043',
@@ -31,4 +33,4 @@ export const adminJs = new AdminJs({
   }
 })
 
-export const adminJsRouter = AdminJsExpress.buildRouter(adminJs)
+export const adminJsRouter = AdminJSExpress.buildRouter(adminJs)

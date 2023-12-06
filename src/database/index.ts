@@ -1,13 +1,15 @@
 import { Sequelize } from 'sequelize'
 
-export const database = new Sequelize({
+const database = new Sequelize({
   dialect: 'postgres',
   host: 'localhost',
   port: 5432,
-  database: 'cursosead_development',
-  username: 'postgres',
+  database: 'cursosead',
+  username: 'cursosead',
   password: 'senha1234',
 	define: {
     underscored: true
   }
 })
+
+export default database
